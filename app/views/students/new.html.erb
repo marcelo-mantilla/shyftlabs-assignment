@@ -1,0 +1,25 @@
+<div class="new-student-container">
+  <h6 class="mb-3">Create a new student:</h6>
+
+  <%= form_for(@student, url: students_path, html: { method: :post}) do |f| %>
+    <div class="field">
+      <%= invalid = @student.errors.include?(:first_name) %>
+      <%= f.label 'First Name' %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="field">
+      <%= invalid = @student.errors.include?(:family_name) %>
+      <%= f.label 'Family Name' %>
+      <%= f.text_field :family_name %>
+    </div>
+
+    <div class="field">
+      <%= invalid = @student.errors.include?(:date_of_birth) %>
+      <%= f.label 'Date of Birth' %>
+      <%= f.date_field :date_of_birth %>
+    </div>
+
+    <%= f.submit 'Add Student', class: 'btn btn-secondary' %>
+  <% end %>
+</div>
