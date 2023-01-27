@@ -1,21 +1,26 @@
+<% if @student.errors.any? %>
+    <% @student.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger mb-0" role="alert">
+      <%= message %>.
+    </div>
+    <% end  %>
+<% end %>
+
 <div class="new-student-container">
   <h6 class="mb-3">Create a new student:</h6>
 
-  <%= form_for(@student, url: students_path, html: { method: :post}) do |f| %>
+  <%= form_for(@student, url: students_path) do |f| %>
     <div class="field">
-      <%= invalid = @student.errors.include?(:first_name) %>
       <%= f.label 'First Name' %>
       <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
-      <%= invalid = @student.errors.include?(:family_name) %>
       <%= f.label 'Family Name' %>
       <%= f.text_field :family_name %>
     </div>
 
     <div class="field">
-      <%= invalid = @student.errors.include?(:date_of_birth) %>
       <%= f.label 'Date of Birth' %>
       <%= f.date_field :date_of_birth %>
     </div>
