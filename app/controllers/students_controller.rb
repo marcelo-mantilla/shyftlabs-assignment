@@ -8,16 +8,27 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create!(create_params)
+    @student = Student.new
+    @student.first_name = params[:student][:first_name]
+    @student.family_name = params[:student][:family_name]
+    @student.date_of_birth = params[:student][:date_of_birth]
 
-    @student.valid?
-    
+    Rails.logger.info("FUCK YOU: #{@student.first_name}")
+
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to students_url, notice: "Student was succesfully added."}
+        format.json { render index, status: :created, location: @student }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
 
   def create_params
-    params.permit(%i[first_name family_name date_of_birth])
-    params.require(%i[first_name family_name date_of_birth])
+    params.slice(:student)
   end
 end
