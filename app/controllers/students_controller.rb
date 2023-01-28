@@ -1,10 +1,7 @@
 class StudentsController < ApplicationController
-  def index
-    @students = Student.all
-  end
-
   def new
     @student = Student.new
+    @students = Student.all
   end
 
   def create
@@ -12,12 +9,11 @@ class StudentsController < ApplicationController
     @student.first_name = params[:student][:first_name]
     @student.family_name = params[:student][:family_name]
     @student.date_of_birth = params[:student][:date_of_birth]
-
-    Rails.logger.info("FUCK YOU: #{@student.first_name}")
+    @courses = Course.all
 
     respond_to do |format|
       if @student.save
-        format.html { redirect_to students_url, notice: "Student was succesfully added."}
+        format.html { redirect_to home_index_path, notice: "Student was successfully added."}
         format.json { render index, status: :created, location: @student }
       else
         format.html { render :new, status: :unprocessable_entity }

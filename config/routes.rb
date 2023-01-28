@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'students#index'
+  root to: 'home#index'
 
-  resources :students, only: [:new, :index, :create]
+  resources :home, only: [:index]
+  resources :students, only: [:new, :create]
+  resources :courses, only: [:new, :index, :create]
 end
