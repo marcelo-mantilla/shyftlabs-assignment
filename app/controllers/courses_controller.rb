@@ -9,8 +9,7 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new
-    @course.name = params[:course][:name]
+    @course = Course.new(create_params)
     saved = @course.save
 
     @courses = Course.all
@@ -20,9 +19,7 @@ class CoursesController < ApplicationController
                turbo_stream.replace(
                  'courses_table',
                  partial: 'courses/courses_table',
-                 locals: {
-                   courses: @courses
-                 }
+                 locals: { courses: @courses }
                )
     else
       respond_to do |format|
@@ -30,5 +27,11 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  private
+
+  def create_params
+    params.require(:course).permit(:name)
   end
 end
