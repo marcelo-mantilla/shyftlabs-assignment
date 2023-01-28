@@ -1,0 +1,20 @@
+<%= turbo_frame_tag 'courses_table' do %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Date Created</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% courses&.each do |course| %>
+      <tr>
+        <th scope="row"><%= course.id %></th>
+        <td><%= course.name %></td>
+        <td><%= course.created_at.strftime("%m-%d-%Y") %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

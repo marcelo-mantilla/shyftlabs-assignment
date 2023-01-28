@@ -1,0 +1,22 @@
+<% if @course.errors.any? %>
+  <% @course.errors.full_messages.each do |message| %>
+    <div class="alert alert-danger mb-0" role="alert">
+      <%= message %>.
+    </div>
+  <% end  %>
+<% end %>
+
+<div class="new-courses-container">
+  <%= render partial: 'courses/courses_table', locals: { courses: @courses } %>
+
+  <div class="add-courses-container">
+    <%= form_for(@course, url: courses_url) do |f| %>
+      <div class="mb-3">
+        <%= f.label 'Course Name' %>
+        <%= f.text_field :name %>
+      </div>
+
+      <%= f.submit 'Add Course', class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>
