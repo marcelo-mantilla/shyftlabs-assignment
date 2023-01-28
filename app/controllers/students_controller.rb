@@ -1,17 +1,25 @@
 class StudentsController < ApplicationController
-  def index
+  def new
+    @student = Student.new
     @students = Student.all
   end
 
-  def new
-    @student = Student.new
-  end
-
   def create
-    @student = Student.create!(create_params)
+    @student = Student.new
+    @student.first_name = params[:student][:first_name]
+    @student.family_name = params[:student][:family_name]
+    @student.date_of_birth = params[:student][:date_of_birth]
+    @courses = Course.all
 
-    @student.valid?
-    
+    respond_to do |format|
+      if @student.save
+        format.html { redirect_to home_index_path, notice: "Student was successfully added."}
+        format.json { render index, status: :created, location: @student }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @student.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

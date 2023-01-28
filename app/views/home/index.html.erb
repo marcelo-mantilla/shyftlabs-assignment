@@ -1,5 +1,5 @@
 <div class="students-index-container">
-  <div class="index mb-3">
+  <div class="index">
     <table class="table">
       <thead>
       <tr>
@@ -21,12 +21,17 @@
       </tbody>
     </table>
 
+    <%= render partial: 'courses/courses_table', locals: { courses: @courses } %>
   </div>
+
   <div class="create-student-container">
-    <h6 class="mb-3">Create new students here:</h6>
-
-    <%= link_to 'Create Student', new_student_url, class: 'btn btn-secondary' %>
-
-
+    <div class="mb-3">
+      <h6 class="mb-3">Create new students here:</h6>
+      <%= link_to 'Create Student', new_student_url, class: 'btn btn-secondary' %>
+    </div>
+    <div class="mb-3">
+      <h6>Create new courses here:</h6>
+      <%= link_to 'Create Course', new_course_url, class: 'btn btn-secondary' %>
+    </div>
   </div>
 </div>
