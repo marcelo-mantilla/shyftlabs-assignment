@@ -5,11 +5,7 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.new
-    @student.first_name = params[:student][:first_name]
-    @student.family_name = params[:student][:family_name]
-    @student.date_of_birth = params[:student][:date_of_birth]
-    @courses = Course.all
+    @student = Student.new(create_params)
 
     respond_to do |format|
       if @student.save
@@ -25,7 +21,6 @@ class StudentsController < ApplicationController
   private
 
   def create_params
-    params.permit(%i[first_name family_name date_of_birth])
-    params.require(%i[first_name family_name date_of_birth])
+    params.require(:student).permit(:first_name, :family_name, :date_of_birth)
   end
 end
