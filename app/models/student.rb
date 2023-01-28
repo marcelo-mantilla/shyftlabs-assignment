@@ -1,6 +1,16 @@
 class Student < ApplicationRecord
+  ### Associations
+  has_many :grades
+  has_many :courses, through: :grades
+
+  ### Validations
   validates :first_name, :family_name, :date_of_birth, presence: true
   validate :validate_age
+
+  ### Instance Method
+  def full_name
+    "#{self.first_name} #{self.family_name}"
+  end
 
   private
 
