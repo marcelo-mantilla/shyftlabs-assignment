@@ -1,25 +1,28 @@
 <div class="home-index-container">
-  <div class="home-index-table">
 
-    <div class="mx-3">
-      <%= render partial: 'students/students_table', locals: { students: @students } %>
-      <h6 class="mb-3">Create new students here:</h6>
+  <div class="index mx-3 mb-4">
+    <h4 class="text-info">Students</h4>
+    <%= render partial: 'students/students_table', locals: { students: @students } %>
+    <div class="mb-3">
+      <!--      <h6 class="mb-2">Create new students here:</h6>-->
       <%= link_to 'Create Student', new_student_url, class: 'btn btn-secondary' %>
     </div>
   </div>
 
-  <div class="mx-3">
+  <div class="index mx-3 mb-4">
+    <h4 class="text-info">Courses</h4>
     <%= render partial: 'courses/courses_table', locals: { courses: @courses } %>
     <div class="mb-3">
-      <h6>Create new courses here:</h6>
-      <%= link_to 'Create Course', new_course_url, class: 'btn btn-secondary' %>
+      <!--      <h6 class="mb-2">Create new courses here:</h6>-->
+      <%= link_to 'Create Courses', new_course_url, class: 'btn btn-secondary' %>
     </div>
   </div>
 
-  <div class="mx-3">
+  <div class="index mx-3 mb-4">
+    <h4 class="text-info">Results</h4>
     <%= render partial: 'results/results_table', locals: { results: @results || [] } %>
     <div class="mb-3">
-      <h6>Assign new grades here:</h6>
+      <!--      <h6 class="mb-2">Assign new grades here:</h6>-->
       <%= link_to 'Assign Grades', new_result_url, class: 'btn btn-secondary' %>
     </div>
   </div>

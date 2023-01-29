@@ -4,7 +4,7 @@
       <%= message %>.
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-  <% end  %>
+  <% end %>
 <% end %>
 
 <div class="new-courses-container">
@@ -12,8 +12,8 @@
 
   <div class="add-courses-container">
     <%= form_for(@course, url: courses_url) do |f| %>
-      <div class="mb-3">
-        <%= f.label 'Course Name' %>
+      <div class="course-form mb-3">
+        <%= f.label 'Course Name', class: 'me-2' %>
         <%= f.text_field :name %>
       </div>
 

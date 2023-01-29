@@ -6,8 +6,12 @@
   align-items: start;
   padding: 0.8em;
 
+  .index {
+    flex-grow: 100;
+  }
+
   table {
-    margin-bottom: 1.8em;
+    margin-bottom: 1.2em;
   }
 }
 
