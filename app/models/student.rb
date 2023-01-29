@@ -1,7 +1,7 @@
 class Student < ApplicationRecord
   ### Associations
-  has_many :grades
-  has_many :courses, through: :grades
+  has_many :results
+  has_many :courses, through: :results
 
   ### Validations
   validates :first_name, :family_name, :date_of_birth, presence: true

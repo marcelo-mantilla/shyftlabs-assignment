@@ -1,15 +1,15 @@
-<% if @grade.errors.any? %>
-  <% @grade.errors.full_messages.each do |message| %>
+<% if @result.errors.any? %>
+  <% @result.errors.full_messages.each do |message| %>
     <div class="alert alert-danger alert-dismissible fade show mb-0" role="alert">
       <%= message %>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-  <% end  %>
+  <% end %>
 <% end %>
 
-<div class="grade-new-page">
-  <div class="grade-submission">
-    <%= form_for(@grade, url: grades_url) do |f| %>
+<div class="results-new-page">
+  <div class="result-submission me-4">
+    <%= form_for(@result, url: results_url) do |f| %>
       <div class="mb-3">
         <%= f.label 'Student' %>
         <%= f.collection_select(:student_id, Student.all, :id, :full_name, prompt: true) %>
@@ -27,6 +27,5 @@
   <% end %>
   </div>
 
-  <%= render partial: 'grades_table', locals: { grades: @grades } %>
-
+  <%= render partial: 'results_table', locals: { results: @results } %>
 </div>
