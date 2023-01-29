@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-    it { should have_many :grades }
+    it { should have_many :results }
     it { should have_many :students }
 
   context 'validations' do
