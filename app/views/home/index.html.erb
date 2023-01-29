@@ -1,37 +1,26 @@
-<div class="students-index-container">
-  <div class="index">
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Family Name</th>
-        <th scope="col">Date of Birth</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <th scope="row"><%= student.id %></th>
-          <td><%= student.first_name %></td>
-          <td><%= student.family_name %></td>
-          <td><%= student.date_of_birth.to_s %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+<div class="home-index-container">
+  <div class="home-index-table">
 
-    <%= render partial: 'courses/courses_table', locals: { courses: @courses } %>
-  </div>
-
-  <div class="create-student-container">
-    <div class="mb-3">
+    <div class="mx-3">
+      <%= render partial: 'students/students_table', locals: { students: @students } %>
       <h6 class="mb-3">Create new students here:</h6>
       <%= link_to 'Create Student', new_student_url, class: 'btn btn-secondary' %>
     </div>
+  </div>
+
+  <div class="mx-3">
+    <%= render partial: 'courses/courses_table', locals: { courses: @courses } %>
     <div class="mb-3">
       <h6>Create new courses here:</h6>
       <%= link_to 'Create Course', new_course_url, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+
+  <div class="mx-3">
+    <%= render partial: 'results/results_table', locals: { results: @results || [] } %>
+    <div class="mb-3">
+      <h6>Assign new grades here:</h6>
+      <%= link_to 'Assign Grades', new_result_url, class: 'btn btn-secondary' %>
     </div>
   </div>
 </div>
