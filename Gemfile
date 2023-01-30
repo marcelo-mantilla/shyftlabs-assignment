@@ -59,7 +59,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "rspec-rails"
   gem "shoulda"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -76,7 +75,10 @@ group :test do
   gem "webdrivers"
   gem "rspec-rails"
   gem "shoulda"
+end
 
+group :development, :test do
+  gem "rspec-rails"
 end
 
 gem "pg", "~> 1.4"
