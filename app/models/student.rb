@@ -5,6 +5,8 @@ class Student < ApplicationRecord
 
   ### Validations
   validates :first_name, :family_name, :date_of_birth, presence: true
+  validates :first_name, :family_name, length: { maximum: 25 }
+
   validate :validate_age
 
   ### Instance Method
@@ -16,7 +18,11 @@ class Student < ApplicationRecord
 
   def validate_age
     if date_of_birth.present? && date_of_birth > 10.years.ago.to_date
-      errors.add(:date_of_birth, "The student must be over 10 years old.")
+      return errors.add(:date_of_birth, "is invalid, must be over 10 years of age")
+    end
+
+    if date_of_birth.present? && date_of_birth < 100.years.ago.to_date
+      return errors.add(:date_of_birth, "is invalid, must be under 100 years of age")
     end
   end
 end

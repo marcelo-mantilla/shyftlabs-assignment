@@ -12,12 +12,12 @@
   <%= form_for(@student, url: students_path) do |f| %>
     <div class="field">
       <%= f.label 'First Name' %>
-      <%= f.text_field :first_name %>
+      <%= f.text_field :first_name, maxLength: 25 %>
     </div>
 
     <div class="field">
       <%= f.label 'Family Name' %>
-      <%= f.text_field :family_name %>
+      <%= f.text_field :family_name, maxLength: 25 %>
     </div>
 
     <div class="field">
